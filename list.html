@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="css/css1.css" rel="stylesheet">
+    
+    <style>
+
+    </style>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="foo">
+    <meta name="keywords" content="foo">
+    <meta name="author" content="jlgb">
+
+  </head>
+
+  <body class="fondo">
+
+    <div class="container " style="padding-top: 1em;">
+      <div class="row"  class="col fondo1">
+        <div class="col fondo1">
+          <span class="textoBold">1- Nación:</span><br>
+          <button class="btn btn-link" id="flag_uk"><a class="dropdown-item UK" href="#"></a></button>
+          <button class="btn btn-link" id="flag_es"><a class="dropdown-item ES" href="#"></a></button>
+          <button class="btn btn-link" id="flag_fr"><a class="dropdown-item FR" href="#"></a></button>
+          <button class="btn btn-link" id="flag_us"><a class="dropdown-item US" href="#"></a></button>
+          <button class="btn btn-link" id="flag_void"><a class="dropdown-item VOID" href="#"></a></button>
+          <br>
+          
+          <!-- ---------- -->
+          <span class="textoBold">2- Nombre de la flota</span><br>
+          <input type="text" class="form-control captura" id="nombre_flota" aria-describedby="emailHelp" placeholder="Flota" >
+          <br>
+
+          <!-- ---------- -->
+          <fieldset style="border: 1px solid;padding: 5px;" class="marco">
+            <span class="textoBold">3- Naves:</span><br>
+              <select id="ship" size="4" class="form-select select2" aria-label="" style="width: 20em;" >
+                <option selected class="textoBold info2">Ships</option>
+
+                <optgroup label="Ships of the line" id="line" style="display: ;"></optgroup>
+                <optgroup label="Unrated" id="unrated" style="display: ;"></optgroup>
+
+                <optgroup label="GREAT BRITAIN" id="UK" style="display: none;"></optgroup>
+                <optgroup label="FRANCE" id="FR" style="display: none;"></optgroup>
+                <optgroup label="UNITED STATES OF AMERICA" id="US" style="display: none;"></optgroup>
+                <optgroup label="SPAIN" id="ES" style="display: none;"></optgroup>
+              </select>
+
+            <select id="ship_upgrades" multiple size="4" class="form-select select2" aria-label="" >
+            <option selected class="textoBold info2">Ship Upgrades</option>
+            </select>
+            <button class="btn btn-success" id="add_ship" style="margin-left: 5pt;">Agregar</button>
+            <br>
+          <table style="width: 100%;">
+            <tr>
+              <td>Barco: <span id="b1" class="info1"></span><br>
+                <span class="tab">
+                  Points:&nbsp;<span id="b_pt" class="info1"></span> &nbsp;Size: <span id="b_size" class="info1"></span>&nbsp;Upgrades:&nbsp;<span id="up_tot" class="info1"></span>
+                </span>
+                <ul id="list_upgrades"></ul>
+              </td>
+            </tr>
+            <tr><td style="float: right; margin-right: 2em;">puntos: <span id="localPT">0</span></td></tr>
+          </table>
+
+          </fieldset>
+            
+          
+          <br>
+
+          <!-- ---------- -->
+          <span class="textoBold">4- Land Fortifications:</span><br>
+            <select id="forts" class="form-select" aria-label="Default select example" >
+            <option selected>Fortifications</option>
+            </select>
+            <button class="btn btn-success" id="add_fort" style="margin-left: 5pt;">Agregar</button>
+          <br>
+          
+        </div>
+
+<!-- --------------------------------------- -->        
+        <div class="col fondo1">
+          <fieldset id="contenedor_fondo_lista" class="marco fondo_lista" style="padding: revert;border: 1px solid;min-height: 6em;">
+            <legend id="titulo" style="width: auto;padding: inherit;margin-bottom: -1em;">
+              <h2 style="margin-left: 2em;"><span id="titulo2">FLOTA</span> (pt:<span id="totalPt"></span>)</h2>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
+  <script type="text/javascript" src="js/backen.js"></script>
+
+  <!-- scripts locales -->
+  
+</html>
