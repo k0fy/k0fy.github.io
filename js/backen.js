@@ -129,6 +129,41 @@ var sumaLocal = (x) => {
   $("#localPT").text(localPT);
 }
 
+var restaLocal = (x) => {
+  localPT = localPT - x;
+  $("#localPT").text(localPT);
+}
+
+var op1 = () => {
+  let x = $("#ship").val();
+  $("#b1").text(listaBarcos[x].nombre);
+  //line_info[x];
+  $("#b_size").text(listaBarcos[x].z);
+  restaLocal($("#b_pt").text());
+  
+  $("#b_pt").text(listaBarcos[x].pt);
+  $("#up_tot").text(ship_upgrades[listaBarcos[x].z]);
+  
+  sumaLocal(listaBarcos[x].pt);
+  
+  if(ship_upgrades[listaBarcos[x].z] === 0){ //upgrade1
+    $("#upgrade1").prop("disabled", true);
+  }
+  else{
+    $("#upgrade1").prop("disabled", false);
+  }
+};
+
+
+const upg_select = (v) => {
+  if(v === undefined){
+    return parseInt($("#upg_select").text());
+  }
+  else {
+    $("#upg_select").text(v);
+    return parseInt(v);
+  }
+}
 /* ********** */
 
 
@@ -178,6 +213,7 @@ $("#flag_fr").click(function(){
 //selector de navios
 rellenaSelect();
 
+$("#ship").change(op1);
 /*
 for (x in listaBarcos){
   listaBarcos[x].grupo
@@ -195,6 +231,7 @@ $("#add_ship").click(function(){
       var puntos = upgrades[posId[x]].pt;
       //suma
       sumaLocal(puntos);
+      upg_select(upg_select() + 1);
       
       var li = document.createElement("li");
       li.id = posId[x];
@@ -209,6 +246,7 @@ $("#add_ship").click(function(){
         $(this).parent().remove();
         localPT = localPT - puntos;
         $("#localPT").text(localPT);
+        upg_select(upg_select() - 1);
       }
       
       li.appendChild(bt_x);

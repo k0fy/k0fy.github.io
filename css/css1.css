@@ -10,6 +10,9 @@
   text-decoration: underline;
   padding-left: 5pt;
   padding-right: 5pt;
+  background: url(file:///home/jlgb/Im%C3%A1genes/fondo_textura.1.jpg) 0 0 repeat;
+  border: 1px inset black;
+  border-radius: 8px;
 }
 
 .info2{
@@ -109,3 +112,32 @@ button{border-style: inset;!important}
   /*width: 100%;*/
 }
 .tab{margin-left: 1em;}
+
+/*
+.span1{
+  min-width: 11em;
+  display: inline-block;
+}
+*/
+.infoBarco {
+  min-width: 11em;
+  display: inline-block;
+  min-height: 1.5em;
+}
+
+.infoPoint{
+  width: 3em;
+  display: inline-block;
+  min-height: 1.5em;
+}
+
+.infosize{
+  width: 2em;
+  display: inline-block;
+  min-height: 1.5em;
+}
+.infoUpgrades{
+  width: 2.6em;
+  display: inline-block;
+  min-height: 1.5em;
+}

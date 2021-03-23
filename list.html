@@ -59,15 +59,22 @@
             <br>
           <table style="width: 100%;">
             <tr>
-              <td>Barco: <span id="b1" class="info1"></span><br>
+              <td>Barco: <span id="b1" class="info1 infoBarco"></span><br>
                 <span class="tab">
-                  Points:&nbsp;<span id="b_pt" class="info1"></span> &nbsp;Size: <span id="b_size" class="info1"></span>&nbsp;Upgrades:&nbsp;<span id="up_tot" class="info1"></span>
+                  Points:&nbsp;<span id="b_pt" class="info1 infoPoint"></span>
+                  &nbsp;Size: <span id="b_size" class="info1 infosize"></span>
+                  &nbsp;Upgrades:&nbsp;<span class="info1 infoUpgrades">
+                    <span id="upg_select">0</span>/<span id="up_tot">0</span>
+                  </span>
                 </span>
                 <ul id="list_upgrades"></ul>
               </td>
             </tr>
             <tr><td style="float: right; margin-right: 2em;">puntos: <span id="localPT">0</span></td></tr>
           </table>
+          
+          <input type="hidden" id="id_upgrades" value="">
+          <input type="hidden" id="id_ship" value="">
 
           </fieldset>
             
