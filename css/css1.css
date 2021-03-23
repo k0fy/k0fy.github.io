@@ -10,7 +10,7 @@
   text-decoration: underline;
   padding-left: 5pt;
   padding-right: 5pt;
-  background: url(file:///home/jlgb/Im%C3%A1genes/fondo_textura.1.jpg) 0 0 repeat;
+  background: url(../img/fondo_textura.1.jpg) 0 0 repeat;
   border: 1px inset black;
   border-radius: 8px;
 }
