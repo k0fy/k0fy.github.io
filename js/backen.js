@@ -145,6 +145,7 @@ var op1 = () => {
   $("#up_tot").text(ship_upgrades[listaBarcos[x].z]);
   
   sumaLocal(listaBarcos[x].pt);
+  ID_Ship(x);
   
   if(ship_upgrades[listaBarcos[x].z] === 0){ //upgrade1
     $("#upgrade1").prop("disabled", true);
@@ -164,6 +165,56 @@ const upg_select = (v) => {
     return parseInt(v);
   }
 }
+
+/*
+ * name: ID_Ship
+ * @param id
+ * @return id
+ * pone en un campo oculto el id del barco
+ * 
+ */
+const ID_Ship = (id) => {
+  if(id === undefined){
+    return parseInt($("#id_ship").val());
+  }
+  else{
+    $("#id_ship").val(id);
+    return id;
+  }
+  //id_ship
+}
+
+/*
+ * name: ID_upgrades
+ * @param array con id
+ * @return array con id
+ *
+ * pone en un campo oculto los id de los upgrades
+ */
+
+const ID_upgrades = (arr) => {
+  if(arr === undefined){
+    var x=[];
+    x.push( $("#id_upgrades").val() );
+    return x;
+  }
+  else {
+    $("#id_upgrades").val(arr.toString());
+    return arr;
+  }
+}
+
+const listaUpgrades = () =>{
+  var x=[];
+  $("li").each(function(){
+    x.push($(this).val())
+  });
+  return x;
+}
+/*
+
+ * */
+
 /* ********** */
 
 
@@ -225,35 +276,38 @@ rellena_shipUpgrades();
 $("#add_ship").click(function(){
   var posId = $("#ship_upgrades").val();
   
-  for(x in posId){
-    if(posId[x] != "Ship Upgrades"){
-      var desc = upgrades[posId[x]].desc;
-      var puntos = upgrades[posId[x]].pt;
-      //suma
-      sumaLocal(puntos);
-      upg_select(upg_select() + 1);
-      
-      var li = document.createElement("li");
-      li.id = posId[x];
-      li.innerText = desc + " (pt:" + puntos + ") ";
+  if(posId != "Ship Upgrades"){
+    var desc = upgrades[posId].desc;
+    var puntos = upgrades[posId].pt;
+    //suma
+    sumaLocal(puntos);
+    upg_select(upg_select() + 1);
 
-      var bt_x = newSpan();
-      bt_x.classList.add("oi");
-      bt_x.classList.add("oi-x");
-      bt_x.style="color: #b91616; cursor: pointer;";
-      
-      bt_x.onclick = function(){
-        $(this).parent().remove();
-        localPT = localPT - puntos;
-        $("#localPT").text(localPT);
-        upg_select(upg_select() - 1);
-      }
-      
-      li.appendChild(bt_x);
-      //$(bt_x).appendTo(li);
-      $(li).appendTo("#list_upgrades");
+    ID_upgrades(listaUpgrades());
+    
+    var li = document.createElement("li");
+    li.value = posId;
+    li.innerText = desc + " (pt:" + puntos + ") ";
+
+    var bt_x = newSpan();
+    bt_x.classList.add("oi");
+    bt_x.classList.add("oi-x");
+    bt_x.style="color: #b91616; cursor: pointer;";
+    
+    bt_x.onclick = function(){
+      $(this).parent().remove();
+      localPT = localPT - puntos;
+      $("#localPT").text(localPT);
+      upg_select(upg_select() - 1);
+
+      ID_upgrades(listaUpgrades());
     }
+    
+    li.appendChild(bt_x);
+    //$(bt_x).appendTo(li);
+    $(li).appendTo("#list_upgrades");
   }
+
   //if(posId.indexOf("Ship Upgrades") != true){}
   
 })
