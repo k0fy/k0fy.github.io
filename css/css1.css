@@ -141,3 +141,7 @@ button{border-style: inset;!important}
   display: inline-block;
   min-height: 1.5em;
 }
+
+.boldFont{
+  font-weight: bold
+}
