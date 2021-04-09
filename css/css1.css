@@ -10,9 +10,14 @@
   text-decoration: underline;
   padding-left: 5pt;
   padding-right: 5pt;
+/*
   background: url(../img/fondo_textura.1.jpg) 0 0 repeat;
+*/
   border: 1px inset black;
+/*
   border-radius: 8px;
+*/
+  border-radius: 6px;
 }
 
 .info2{
@@ -75,7 +80,7 @@ button{border-style: inset;!important}
 
 .captura{
   font-weight: bold;
-  background-color: #793d3d00;
+  background-color: #ffffff70; /*#793d3d00;*/
   border: 2px black inset;
   color: black;
 }
