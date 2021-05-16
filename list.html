@@ -38,7 +38,7 @@
           <br>
 
           <!-- ---------- -->
-          <fieldset style="border: 1px solid;padding: 5px;" class="marco">
+          <fieldset class="marco">
             <span class="textoBold">3- Naves:</span><br>
               <select id="ship" size="4" class="form-select select2" aria-label="" style="width: 20em;" >
                 <option selected class="textoBold info2">Ships</option>
@@ -89,13 +89,14 @@
           <br>
 
           <!-- ---------- -->
-          <span class="textoBold">4- Land Fortifications:</span><br>
-            <select id="forts" class="form-select" aria-label="Default select example" >
-            <option selected>Fortifications</option>
-            </select>
-            <button class="btn btn-success" id="add_fort" style="margin-left: 5pt;">Agregar</button>
-          <br>
-          
+          <fieldset class="marco">
+            <span class="textoBold">4- Land Fortifications:</span><br>
+              <select id="forts" size="4" class="form-select select2" aria-label="" style="width: 20em;" aria-label="Default select example" >
+              <!-- <option selected>Fortifications</option> -->
+              </select>
+              <button class="btn btn-success" id="add_fort" style="margin-left: 5pt;">Agregar</button>
+            <br>
+          </fieldset>
         </div>
 
 <!-- --------------------------------------- -->        
@@ -104,7 +105,9 @@
             <legend id="titulo" style="width: auto;padding: inherit;margin-bottom: -1em;">
               <h2 style="margin-left: 2em;"><span id="titulo2">FLOTA</span> (pt:<span id="totalPt"></span>)</h2>
             </legend>
+            <button id="get_pdf">PDF</button>
           </fieldset>
+          <div id="preview-pane"></div>
         </div>
       </div>
     </div>
@@ -114,6 +117,11 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pouchdb@7.2.1/dist/pouchdb.min.js"></script>
   <script type="text/javascript" src="js/backen.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+  
+  <!--
+  <script type="text/javascript" src="js/lista.js"></script>
+  -->
 
   <!-- scripts locales -->
   

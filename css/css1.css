@@ -53,6 +53,7 @@
   padding: revert;
   border: 1px solid;
   min-height: 6em;
+  padding: 5px;
 }
 
 button{border-style: inset;!important}
@@ -149,4 +150,9 @@ button{border-style: inset;!important}
 
 .boldFont{
   font-weight: bold
+}
+
+.pdf{
+  width: 100%;
+  height: 25em;
 }
