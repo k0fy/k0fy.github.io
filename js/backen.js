@@ -1,5 +1,16 @@
 //DATOS - DB -
 
+/*
+ * db/lista para imprimir
+{
+  barcos:[{bid:xx, upgrades:[], capitan:id},..],
+  land:[id,id]
+}
+
+ */
+var listaFinal={barcos:[],land:[]};
+
+
 //fortificaciones terrestres
 var land_fort =[
   {nombre:"Shore Gun Emplacement",    z:"M",  pt:40,  grupo:"land", display: ""},
@@ -83,7 +94,74 @@ const upgrades = [ // {desc:"",pt:10}
 
 //-- fin db -------
 
+//---variables---
+//nacion
+var flagID = "unaligned";
+
+//------------------------------
 /* **funciones** */
+
+/*
+ * clase para agregar a la lista
+ */
+var Agrega={};
+
+/*
+*Agrega.barco(DB, bid, upgrades,capitan)
+*    bid      : ud del barco
+*    upgrades : array con id de upgrades puede ser nulo
+*    capitan  : id del personaje, puede ser nulo
+ */
+Agrega.barco=function(listaFinal, bid, upgrades, capitan){
+  var tmp = {};
+  if(bid !== undefined){
+    tmp.bid = bid;
+    
+    if (upgrades !== undefined){
+      tmp["upgrades"] = upgrades;
+    }
+    else{
+      tmp["upgrades"] = undefined;
+    }
+    
+    if(capitan !== undefined){
+      tmp["capitan"] = capitan;
+    }
+    else
+    {
+      tmp["capitan"] = undefined;
+    }
+    
+    listaFinal.barcos.push(tmp)
+  }
+  return listaFinal;
+}
+/*
+Agrega.fortificacion(DB, fort)
+  DB   : lista final
+  fort : id de la fortificacion
+*/
+Agrega.fortificacion=function(listaFinal, fort){
+  
+  if(fort !== undefined){
+    listaFinal.land.push(fort);
+  }
+  
+  return listaFinal;
+}
+
+
+/*
+ *
+ */
+const rellena_forts = () => {
+  for (z in land_fort){
+    x = document.createElement("OPTION");
+    x.value = z;
+    x.innerText =  land_fort[z].nombre + " (" + land_fort[z].z + " puntos: " + land_fort[z].pt + ")";
+    $(x).appendTo("#forts");
+  }
+}
 
 /*
  * name: rellena_shipUpgrades
@@ -122,7 +200,7 @@ const newSpan = () => {
   return document.createElement("span");
 }
 
-var localPT = 0;
+var localPT = 0; ////////cambiar de ligar
 
 var sumaLocal = (x) => {
   localPT = localPT + x;
@@ -211,9 +289,41 @@ const listaUpgrades = () =>{
   });
   return x;
 }
-/*
 
+/**
+ * trae el nombre de la nacion
  * */
+const NombreNacion = (flagID) =>{
+  switch (flagID){
+    case "unaligned": return "No Alineados";
+    break;
+
+    case "uk": return "Ingleses";
+    break;
+    
+    case "es": return "Españoles";
+    break;
+    
+    case "us": return "Estadounidenses";
+    break;
+    case "fr": return "Franceses";
+    break;
+  }
+}
+
+/*+
+ * regresa el nombre de la lista a jugar
+ * */
+const nombreFlota = () =>{
+  var x = document.getElementById("nombre_flota");
+  
+  if (x.value === ""){
+    return x.placeholder;
+  }
+  else {
+    return x.value;
+  }
+}
 
 /* ********** */
 
@@ -221,6 +331,7 @@ const listaUpgrades = () =>{
 //selector de banderas
 //pone banderas
 $("#flag_uk").click(function(){
+  flagID = "uk";
   $("#titulo").removeClass(["ES","FR","US"]).addClass( "UK" );
   //$("#titulo2").css("marginLeft","2em");
 
@@ -231,6 +342,7 @@ $("#flag_uk").click(function(){
 });
 
 $("#flag_es").click(function(){
+  flagID = "es";
   $("#titulo").removeClass(["UK","FR","US"]).addClass( "ES" );
   //$("#titulo2").css("marginLeft","2em");
 
@@ -241,6 +353,7 @@ $("#flag_es").click(function(){
 });
 
 $("#flag_us").click(function(){
+  flagID = "us";
   $("#titulo").removeClass(["ES","FR","UK"]).addClass( "US" );
   //$("#titulo2").css("marginLeft","2em");
 
@@ -251,6 +364,7 @@ $("#flag_us").click(function(){
 });
 
 $("#flag_fr").click(function(){
+  flagID = "fr";
   $("#titulo").removeClass(["ES","US","UK"]).addClass( "FR" );
   //$("#titulo2").css("marginLeft","2em");
 
@@ -260,6 +374,13 @@ $("#flag_fr").click(function(){
   $("#UK").hide();
 });
 
+$("#flag_void").click(function(){//
+  flagID = "unaligned";
+  $("#US").hide();
+  $("#ES").hide();
+  $("#FR").hide();
+  $("#UK").hide();
+});
 
 //selector de navios
 rellenaSelect();
@@ -272,6 +393,9 @@ for (x in listaBarcos){
 
 //selector de upgrades
 rellena_shipUpgrades();
+
+//
+rellena_forts();
 
 $("#add_ship").click(function(){
   var posId = $("#ship_upgrades").val();
@@ -315,4 +439,48 @@ $("#add_ship").click(function(){
 //selector de fortificaciones terrestres
 
 
-// ---------------------------
+// ----------PDF-----------------
+var gel_pdf = document.getElementById("get_pdf");
+
+  
+get_pdf.onclick = function(){
+  var jsPDF = window.jspdf.jsPDF;
+
+  const config={
+    unit: 'pt'
+  };
+  var doc = new jsPDF(config);
+  
+//  var jsPDF = window.jspdf.jsPDF;
+
+  doc.setFont("courier", "normal");
+  //var titulo = "Flota: " + nombreFlota() + "\nNación: " + NombreNacion(flagID);
+  var titulo = ["Flota: " + nombreFlota(), "Nación: " + NombreNacion(flagID)];
+
+  doc.setFontSize(15);
+  doc.setFont("courier", "bold");
+  doc.text(titulo, 8, 18);
+
+  //tabla barco:
+  //puntos nombre/tipo
+  //       extras
+
+  var pane = document.getElementById("preview-pane")
+  try{
+    pane.removeChild(pane.childNodes[0]);
+  }
+  catch (e) {
+    console.log(e);
+  }
+  var embed = document.createElement("EMBED");
+  embed.classList.add("pdf");
+  pane.appendChild(embed);
+  embed.src=doc.output("bloburl");
+
+//  doc.addImage("examples/images/Octonyan.jpg", "JPEG", 15, 40, 180, 180);
+//  doc.output('datauri', { filename: "test.pdf" });
+//  doc.save("a4.pdf"); // will save the file in the current working directory
+
+
+}
+
