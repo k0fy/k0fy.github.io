@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/gui/fondo/m5/fondo_.png" type="Texture" id=1]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://escenas/Game.gd" type="Script" id=3]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="UI" parent="." instance=ExtResource( 2 )]
+
+[node name="Fondo" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Contenido" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="ColorChange" type="Timer" parent="."]
+autostart = true
+
+[node name="Juego" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="ColorChange" to="." method="_on_ColorChange_timeout"]
+[connection signal="timeout" from="Juego" to="." method="_on_Juego_timeout"]
