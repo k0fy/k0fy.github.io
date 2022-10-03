@@ -11,3 +11,14 @@ ejercicios:
       guardar score
       boton de inicio 
       aumentar tiempo al reventar el globo correcto
+      
+  Complete/stable(?):
+    lista_m3u_1.py and lista_m3u.py 
+      scripts to create m3u and xspf playlist files.<br>
+      I have had a bad habit of saving audio and video files in a weird order, so I created these scripts to search recursively an specific path and  create a basic  m3u or sxpf playlist.
+     Both scripts use python 2
+     
+     
+    basic use:
+    python lista_m3u.py -p ~/media/
+    creates the file stream_lista.m3u in the search parh
