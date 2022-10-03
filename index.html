@@ -24,11 +24,97 @@
      <dd>boton de inicio</dd>
      <dd>aumentar tiempo al reventar el globo correcto</dd>
     </dl>
-
     </li>
     
   </ul>
   
+    <li>Complete/stable(?):</li>
+  <ul>
+    <li>
+    lista_m3u_1.py and lista_m3u.py 
+    <dl>
+    <dt>scripts to create m3u and xspf playlist files.<br>
+I have had a bad habit of saving audio and video files in a weird order, 
+so I created these scripts to search recursively an specific path and  create a basic  m3u or sxpf playlist.
+<br>Both scripts use python 2
+    <br><br>
+    basic use:<br>
+    python lista_m3u.py -p ~/media/<br>
+    creates the file stream_lista.m3u in the search parh<br>
+    
+    <br>this is the help (in spanih)
+    <pre>
+ $ python lista_m3u.py -h
+
+stream_ista 
+
+'V 1.3'
+
+Parametros:
+    -h, --help
+        muestra ayuda
+        
+    -s, --vlc-stream
+        El archivo m3u va a tener los tracks para stream
+    
+    -v, --vlc
+        Crea lista para reproduccion local
+
+    -t, --totem
+        No implementado aun
+    
+    -o, --m3u
+        Para indicar el path y archivo de salida a crear
+        
+         -o path/al/archivo
+         --m3u path/al/archivo
+
+    -a, --add
+        Agrega al archivo existente
+        
+        -a path/al/archivo
+        --add path/al/archivo
+        
+    NOTA: Los parametros -a y -o son mutuamente excluyentes
+
+    -p, --path
+        Para indicarle el path donde inicia la busqueda
+        
+        -p path/a/checar
+    
+
+
+    Tipo de arcihivos
+        Por default busca las siguientes extenciones de audio y video:
+        
+         *.asf, *.avi, *.divx, *.dv, *.flv, *.gxf, *.m1v, *.m2v, 
+         *.m2ts, *.m4v, *.mkv, *.mov, *.mp2, *.mp4, *.mpeg, *.mpeg1,
+         *.mpeg2, *.mpeg4, *.mpg, *.mts, *.mxf, *.ogm, *.ogg, *.ps,
+         *.ts, *.vob, *.a52, *.aac, *.ac3, *.dts, *.flac, *.m4a, 
+         *.m4p, *.mka, *.mod, *.mp1, *.mp2, *.mp3, *.ogg, *.oma
+         *.spx, *.wav, *.xm, *.wmv, *.wma
+    
+    Para crear una lista solo con archivos e audio o video se pueden
+    usar los parametros '--audio' o '--video'
+    
+    --audio crea una lista con las siguientes extenciones de audio:
+    
+         *.a52, *.aac, *.ac3, *.dts, *.flac, *.m4a, 
+         *.m4p, *.mka, *.mod, *.mp1, *.mp2, *.mp3, *.ogg, *.oma
+         *.spx, *.wav, *.xm, *.wma
+         
+    --video crea una lista con las siguientes extenciones de video:
+    
+        Crea una lista con todos los archivos de video
+         *.asf, *.avi, *.divx, *.dv, *.flv, *.gxf, *.m1v, *.m2v, 
+         *.m2ts, *.m4v, *.mkv, *.mov, *.mp2, *.mp4, *.mpeg, *.mpeg1,
+         *.mpeg2, *.mpeg4, *.mpg, *.mts, *.mxf, *.ogm, *.ogg, *.ps,
+         *.ts, *.wmv, *.vob
+
+    </pre>
+    </dt>
+    </li>
+  </ul>
   
 </ul>
 
