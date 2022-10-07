@@ -22,3 +22,5 @@ ejercicios:
     basic use:
     python lista_m3u.py -p ~/media/
     creates the file stream_lista.m3u in the search parh
+    
+    Help: python lista_m3u.py -h

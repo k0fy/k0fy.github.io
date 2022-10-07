@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 
 import os, sys
 import getopt
 from sys import argv
 
-VERSION = 'V 1.3'
+VERSION = 'V 1.3.1'
 
 USO = """
 stream_ista 
@@ -54,7 +54,7 @@ Parametros:
          *.mpeg2, *.mpeg4, *.mpg, *.mts, *.mxf, *.ogm, *.ogg, *.ps,
          *.ts, *.vob, *.a52, *.aac, *.ac3, *.dts, *.flac, *.m4a, 
          *.m4p, *.mka, *.mod, *.mp1, *.mp2, *.mp3, *.ogg, *.oma
-         *.spx, *.wav, *.xm, *.wmv, *.wma
+         *.spx, *.wav, *.xm, *.wmv, *.wma, *.webm
     
     Para crear una lista solo con archivos e audio o video se pueden
     usar los parametros '--audio' o '--video'
@@ -71,7 +71,7 @@ Parametros:
          *.asf, *.avi, *.divx, *.dv, *.flv, *.gxf, *.m1v, *.m2v, 
          *.m2ts, *.m4v, *.mkv, *.mov, *.mp2, *.mp4, *.mpeg, *.mpeg1,
          *.mpeg2, *.mpeg4, *.mpg, *.mts, *.mxf, *.ogm, *.ogg, *.ps,
-         *.ts, *.wmv, *.vob
+         *.ts, *.wmv, *.vob, *.webm
 """ % VERSION
 
 
@@ -85,7 +85,7 @@ VIDEO = ['asf', 'avi', 'divx', 'dv',
          'mp2', 'mp4', 'mpeg', 'mpeg1', 
          'mpeg2', 'mpeg4', 'mpg', 'mts', 
          'mxf', 'ogm', 'ogg', 'ps',
-         'ts', 'vob', 'wmv'
+         'ts', 'vob', 'wmv','webm'
         ]
 
 MEDIA = ['asf', 'avi', 'divx', 'dv', 
@@ -99,7 +99,7 @@ MEDIA = ['asf', 'avi', 'divx', 'dv',
          'm4p', 'mka', 'mod', 'mp1', 
          'mp2', 'mp3', 'ogg', 'oma', 
          'spx', 'wav', 'xm', 'wmv', 
-         'wma'
+         'wma','webm'
         ]
 
 #VIDEOX = ['wmv']
@@ -213,7 +213,7 @@ EXT = ['avi', 'mpg', 'ogm', 'mp3',
         'mkv', 'ogg', 'm4v', 'divx', 
         'flv', 'mov', 'mp2', 
         'mp4', 'mpeg', 'mpeg1', 
-        'mpeg2', 'mpeg4', 'asf'
+        'mpeg2', 'mpeg4', 'asf','webm'
     ]
 """
 
