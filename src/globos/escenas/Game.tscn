@@ -22,9 +22,12 @@ autostart = true
 autostart = true
 
 [node name="Juego" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 15.0
 one_shot = true
 
+[connection signal="quit" from="UI" to="." method="_on_UI_quit"]
+[connection signal="reload" from="UI" to="." method="_on_UI_reload"]
+[connection signal="termina" from="UI" to="." method="_on_UI_termina"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="ColorChange" to="." method="_on_ColorChange_timeout"]
 [connection signal="timeout" from="Juego" to="." method="_on_Juego_timeout"]
