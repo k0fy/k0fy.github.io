@@ -9,8 +9,10 @@ ejercicios:
      basado en https://www.youtube.com/watch?v=xaVYDj1PzN4
      falta:
       guardar score
-      boton de inicio 
-      aumentar tiempo al reventar el globo correcto
+     completado:</dt>
+      opcion para pausar
+      opcion para terminar
+      opcion para reiniciar
       
   Complete/stable(?):
     lista_m3u_1.py and lista_m3u.py 
