@@ -6,6 +6,8 @@ var aceleracion=0.0
 export (int) var velocidad_inicial=30
 export (int, 0, 3) var color
 
+signal suma_tiempo(t)
+
 var colores = [
 	Rect2(0, 0, 42, 55), #azul
 	Rect2(50, 1, 42, 54), #rojo
@@ -34,12 +36,12 @@ func _on_TouchScreenButton_pressed():
 	if Autoload.colorActual == color:
 		Autoload.score += 1
 		Autoload.carita = 0
-#		emit_signal("set_carita", 0)
+		emit_signal("suma_tiempo", 5.0)
 		
 	else:
 		Autoload.carita = 1
 		Autoload.score -= 1
-#		emit_signal("set_carita", 1)
+		emit_signal("suma_tiempo", - 2.0)
 		
 	queue_free()
 
