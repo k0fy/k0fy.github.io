@@ -1,6 +1,19 @@
 extends CanvasLayer
 
 
+onready var popup_msg = $Pause_msg
+#export var pause_msg = true setget show_pause_msg
+
+func show_pause_msg(pause):
+	if pause == true:
+		popup_msg.show()
+	else:
+		popup_msg.hide()
+	#Pause_msg
+
+signal termina
+signal reload
+signal quit
 
 
 func setscore():
@@ -34,10 +47,29 @@ func setscore():
 		else:
 			PUNTOS.text = String(Autoload.score)
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-	#Globo.connect("set_carita",self, "on_change_cara")
-#	pass # Replace with function body.
+
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		print("-p-")
+		
+		get_tree().paused = not get_tree().paused
+		print("pausa: en false: ", get_tree().paused)
+		
+		if get_tree().paused == true:
+			popup_msg.show()
+			
+		else:
+			popup_msg.hide()
+	
+	if event.is_action_pressed("ui_accept"):
+		emit_signal("termina")
+	
+	if event.is_action_pressed("reload"):
+		emit_signal("reload")
+	
+	if event.is_action_pressed("quit"):
+		emit_signal("quit")
 
 #func on_change_cara(v):
 #	#var cara = $Cara
